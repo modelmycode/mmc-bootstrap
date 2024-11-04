@@ -1,0 +1,7 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-query-processors.ts
+inject: true
+after: export const <%=timeLineName%>QueryDb
+skip_if: <%=timeLineName%><%=QueryName%>QueryDb, //
+---
+  <%=timeLineName%><%=QueryName%>QueryDb, //<%= -%>

@@ -1,0 +1,13 @@
+---
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=eventStreamFileName%>.ts
+inject: true
+after_marker: //start <%=TimeLineName%><%=CommandName%>+
+before: //end <%=TimeLineName%><%=CommandName%>+
+after_not_found: when
+---
+//start <%=TimeLineName%><%=CommandName%>+
+  public <%=commandName%>(<% if (isStartOfEventStream) {%><%=eventStreamIdentifier%>: string,<%}%> command: <%=TimeLineName%><%=CommandName%><%if (serviceName) {-%>, <%= serviceParameterType%><%}%> ) {
+<%if (serviceName) {-%>    const <%=serviceResultName%> = <%=serviceCallingCode%><%}-%>
+    this.apply(<%=TimeLineName%><%= h.changeCase.pascalCase(events[0].name)%>, { ...command %><% if (isStartOfEventStream) {%>,<%=eventStreamIdentifier%><%}%> });
+  }
+//end <%=TimeLineName%><%=CommandName%>+

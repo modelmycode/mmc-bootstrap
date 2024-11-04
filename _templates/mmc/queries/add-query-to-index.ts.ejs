@@ -1,0 +1,8 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/index.ts
+inject: true
+prepend: true
+skip_if: export { <%=TimeLineName%><%=QueryName%> }
+---
+export { <%=TimeLineName%><%=QueryName%> } from './lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query';
+export { <%=timeLineName%><%=QueryName%>QueryDb } from './lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query';

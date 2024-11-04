@@ -1,0 +1,7 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/index.ts
+unless_exists: true
+---
+export {<%=TimeLineName%>ApplicationService } from './lib/<%=timeLineFileName%>-application-service'
+export {<%=timeLineName%>AutomationProcessors} from './lib/<%=timeLineFileName%>-automation-processors'
+export {<%=timeLineName%>QueryDb,<%=timeLineName%>QueryProcessors} from './lib/<%=timeLineFileName%>-query-processors'

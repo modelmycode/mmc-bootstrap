@@ -1,0 +1,7 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-application-service.ts
+inject: true
+prepend: true
+skip_if: import { <%=EventStreamName%> } from './<%=eventStreamFileName%>'
+---
+import { <%=EventStreamName%> } from './<%=eventStreamFileName%>'

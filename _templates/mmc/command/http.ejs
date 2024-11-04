@@ -1,0 +1,20 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.http
+force: true
+---
+### <%=TimeLineName%><%=CommandName%> Command
+POST http://localhost:3100/api/command
+Content-Type: application/json
+
+{
+  "businessCapability": "<%=TimeLineName%>",
+  "command": "<%=CommandName%>",
+  "payload": {
+<% command.facts.map( (fact,i) => {%>     "<%=h.changeCase.camel(fact.name)%>" : "<%=fact?.value ?? ''%>"<%if (i!==command.facts.length-1) {%>,<%}%>
+<% }) -%>
+  }
+}
+
+> {%
+  client.global.set('<%=TimeLineName%><%=CommandName%>Id', response.body.<%=TimeLineName%><%=CommandName%>Id)
+%}

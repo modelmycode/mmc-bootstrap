@@ -1,0 +1,8 @@
+---
+to: apps/gateway/src/registered-handlers.ts
+inject: true
+prepend: true
+skip_if: import { <%=TimeLineName%>ApplicationService
+---
+import { <%=TimeLineName%>ApplicationService, <%=timeLineName%>AutomationProcessors,
+<%=timeLineName%>QueryProcessors, <%=timeLineName%>QueryDb } from '@<%=contextFileName%>-backend/<%=timeLineFileName%>'

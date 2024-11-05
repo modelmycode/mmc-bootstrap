@@ -10,8 +10,8 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "@my-project/ui",
-    "ui": "@my-project/ui",
-    "utils": "@my-project/utils"
+    "components": "@mmc-bootstrap/ui",
+    "ui": "@mmc-bootstrap/ui",
+    "utils": "@mmc-bootstrap/utils"
   }
 }

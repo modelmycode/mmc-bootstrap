@@ -1,4 +1,4 @@
-import '@my-project/styles//global.css';
+import '@mmc-bootstrap/global.css';
 
 export const metadata = {
   title: 'Welcome to web-site',

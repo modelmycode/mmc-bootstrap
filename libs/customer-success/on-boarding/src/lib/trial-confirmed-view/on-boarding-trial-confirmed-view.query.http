@@ -1,0 +1,9 @@
+### OnBoardingSendTrialConfirmationRequest Command
+POST http://localhost:3100/api/query
+Content-Type: application/json
+
+{
+  "businessCapability": "OnBoarding",
+  "query": "TrialConfirmedView",
+  "payload": "1"
+}

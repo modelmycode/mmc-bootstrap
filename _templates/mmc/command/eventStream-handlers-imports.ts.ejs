@@ -4,5 +4,5 @@ inject: true
 prepend: true
 skip_if: import { <%=TimeLineName%><%=CommandName%> }
 ---
-import { <%=TimeLineName%><%=CommandName%> } from '../../';
+import { <%=TimeLineName%><%=CommandName%> } from '..';
 <%if(serviceName) {%>import { <%=serviceName%> } from '../../infrastructure';<%}%>

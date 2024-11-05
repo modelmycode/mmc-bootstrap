@@ -1,0 +1,16 @@
+### OnBoardingSendTrialConfirmationRequest Command
+POST http://localhost:3100/api/command
+Content-Type: application/json
+
+{
+  "businessCapability": "OnBoarding",
+  "command": "SendTrialConfirmationRequest",
+  "payload": {
+     "onBoardingId" : "",
+     "email" : ""
+  }
+}
+
+> {%
+  client.global.set('OnBoardingSendTrialConfirmationRequestId', response.body.OnBoardingSendTrialConfirmationRequestId)
+%}

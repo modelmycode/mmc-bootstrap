@@ -15,9 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-project/styles/*": ["libs/ui/src/styles/*"],
-      "@my-project/ui": ["libs/ui/src/ui"],
-      "@my-project/utils": ["utils/src/index.ts"]
+      "@customer-success-backend/on-boarding": [
+        "libs/customer-success/on-boarding/src/index.ts"
+      ],
+      "@mmc-bootstrap": ["libs/ui/src/ui"],
+      "@mmc-bootstrap/styles/*": ["libs/ui/src/styles/*"],
+      "@my-project/infrastructure": ["libs/infrastructure/src/index.ts"],
+      "@my-project/vendors": ["libs/vendors/src/index.ts"],
+      "mmc-bootstrap/utils": ["utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

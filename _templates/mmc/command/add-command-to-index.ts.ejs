@@ -1,0 +1,7 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/index.ts
+inject: true
+prepend: true
+skip_if: export { <%=TimeLineName%><%=CommandName%> }
+---
+export { <%=TimeLineName%><%=CommandName%> } from './lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.command';

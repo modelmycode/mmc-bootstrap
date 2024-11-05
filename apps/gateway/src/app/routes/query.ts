@@ -11,11 +11,11 @@ export default async function (fastify: FastifyInstance) {
       reply
     ) => {
       const { query, payload, businessCapability } = request.body;
-      if (query && payload) {
+      if (query ) {
         try {
-          return await messageBus.execute(
+          return await messageBus.query(
             Object.assign(payload, {
-              constructor: { name: `${businessCapability}.${query}` },
+              constructor: { name: `${businessCapability}${query}` },
             })
           );
         } catch (e) {

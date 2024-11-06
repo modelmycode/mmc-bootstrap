@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@my-project/utils"
+import { cn } from 'mmc-bootstrap/utils';
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}

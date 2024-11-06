@@ -11,7 +11,7 @@ import {
   useFormContext,
 } from "react-hook-form"
 
-import { cn } from "@my-project/utils"
+import { cn } from 'mmc-bootstrap/utils';
 import { Label } from './label';
 
 const Form = FormProvider

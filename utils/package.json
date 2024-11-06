@@ -1,5 +1,5 @@
 {
-  "name": "@my-project/utils",
+  "name": "@mmc-bootstrap/utils",
   "version": "0.0.1",
   "dependencies": {},
   "main": "./index.js",

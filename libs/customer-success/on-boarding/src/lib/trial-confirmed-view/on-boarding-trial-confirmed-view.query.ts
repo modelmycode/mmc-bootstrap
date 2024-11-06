@@ -42,10 +42,10 @@ export class OnBoardingTrialConfirmedViewQueryHandler {
 export class OnBoardingTrialConfirmedViewQueryProjector {
   @eventHandler({name:'OnBoardingTrialConfirmationRequestSent'})
   async onOnBoardingTrialConfirmationRequestSent({onBoardingId: id,...data}: OnBoardingTrialConfirmationRequestSent) {
-    await onBoardingTrialConfirmedViewQueryDb.patch(id, {onBoardingId: id, ...data, firstName:'', lastName:''})
+    await onBoardingTrialConfirmedViewQueryDb.patch(id, {onBoardingId: id, ...data})
   }
   @eventHandler({name:'OnBoardingTrialRequested'})
   async onOnBoardingTrialRequested({onBoardingId: id,...data}: OnBoardingTrialRequested) {
-    await onBoardingTrialConfirmedViewQueryDb.create(id, {onBoardingId: id, ...data, firstName:'', lastName:''})
+    await onBoardingTrialConfirmedViewQueryDb.create(id, {onBoardingId: id, ...data})
   }
 }

@@ -1,101 +1,45 @@
-# MyProject
+# Bootstrap Model My Code Project
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## Steps to get things up and running
+- This project is using nx in combination with pnpm. The nx libraries are local, but pnpm will need to be installed on the machine.
+https://pnpm.io/installation
+- run the docker-compose.yaml to setup two containers. One with AxonServer, the other with Postgres.
+Alternatively:
+  - Go to https://www.axoniq.io/download and download latest version of Axon Server. There are multiple options depending on how you want to run your local version. 
+  Go with the default settings or adjust [apps/gateway/src/main.ts](apps/gateway/src/main.ts)
+> [!IMPORTANT]
+> go to http://localhost:8024/ and finish the installation of axon server by approving the creation of the default context. Otherwise nothing will work!
+  
+  - Have access to a postgres database. An empty database with the name and settings as provided in [apps/gateway/src/main.ts](apps/gateway/src/main.ts)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+# Running the environment
+The app environment consists of a NextJS 14 application (**Web-site**) for the front-end and a NodeJS service (**gateway**)to receive and handle the front-end requests.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+>pnpm nx run web-site:dev
 
-## Run tasks
+>pnpm nx run gateway:serve:development
 
-To run the dev server for your app, use:
+## Web-site 
+This nextJS 14 application is using https://ui.shadcn.com/ as building blocks for all the screens.
+With https://v0.dev/ we can easily generate all the scaffolding needed to execute commands or display views.
+Two examples have been added that either call an action to submit a command or call an action to request a query response.
+### routing
+<img alt="Screenshot 2024-11-05 081346.png" height="200" src="assets%2FScreenshot%202024-11-05%20081346.png" width="300"/>
+<img alt="Screenshot 2024-11-06 145702.png" height="200" src="assets%2FScreenshot%202024-11-06%20145702.png" width="300"/>
 
-```sh
-npx nx dev web-site
-```
+For now an easy direct approach has been chosen that links directly back to the setup in Model My Code.
+The first part of the route is the name of the context, the second the name of the timeline and the last element is the name of the command or query.
+example: 
+http://localhost:3000/customer-success/on-boarding/request-trial
 
-To create a production bundle:
+http://localhost:3000/customer-success/on-boarding/confirmed-trials-view
 
-```sh
-npx nx build web-site
-```
+## Gateway
+The gateway service actually contains all services that are needed by CQRS.
+When needed we can split them into separate services to optimize and scale deployment.
+It is listing on port 3100 for commands and queries. If you want to change this port you can do this in the main.ts file.
 
-To see all available targets to run for a project, run:
-
-```sh
-npx nx show project web-site
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/next:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/react:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/next?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+>[!WARNING]
+> This is NOT a production ready deployment, but a quick setup to get familiar with how a typescript framework can deliver CQRS.
+> Besides safe configuration, this project is not doing any validation of incoming data either.
+> This is fully supported by the ebdconnect-framework but not implemented in this project.

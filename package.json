@@ -1,11 +1,11 @@
 {
-  "name": "@my-project/source",
+  "name": "@mmc-bootstrap/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
   "private": true,
   "dependencies": {
-    "@ebd-connect/cqrs-framework": "^0.0.4",
+    "@ebd-connect/cqrs-framework": "^0.0.22",
     "@fastify/autoload": "~6.0.2",
     "@fastify/cors": "^10.0.1",
     "@fastify/sensible": "~6.0.1",

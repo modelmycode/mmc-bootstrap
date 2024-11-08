@@ -1,0 +1,6 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=queryFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query.ts
+inject: true
+prepend: true
+---
+import {<%queries[queryIndex].events.map((item) => {%><%=TimeLineName%><%=h.changeCase.pascalCase(item.name)-%>,<%})-%>} from '../..';

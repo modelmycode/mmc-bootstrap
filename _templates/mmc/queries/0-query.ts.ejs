@@ -1,0 +1,43 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=queryFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query.ts
+force: true
+---
+import {
+  eventHandler,
+  query,
+  Query,
+  QueryDatabaseModel,
+  queryHandler,
+} from '@ebd-connect/cqrs-framework';
+
+export interface I<%=TimeLineName%><%=QueryName%> {
+<%queries[queryIndex].facts.map( (fact) => {%>  <%=h.changeCase.camel(fact.name)%>: <%=fact.dataType%>;
+<%})-%>
+}
+
+@query('<%=TimeLineName%><%=QueryName%>')
+export class <%=TimeLineName%><%=QueryName%> implements Query {
+  $responseType!: I<%=TimeLineName%><%=QueryName%> | null
+  constructor(
+<%queries[queryIndex].facts.map( (fact) => {%>  public readonly <%=h.changeCase.camel(fact.name)%>: <%=fact.dataType%>,
+<%})-%>
+) {}
+}
+
+export const <%=timeLineName%><%=QueryName%>QueryDb
+  = new QueryDatabaseModel< I<%=TimeLineName%><%=QueryName%> >('<%=timeLineFileName%>-<%=queryFileName%>')
+
+export class <%=TimeLineName%><%=QueryName%>QueryHandler {
+@queryHandler({ name:'<%=TimeLineName%><%=QueryName%>'})
+  async <%=timeLineName%><%=QueryName%>(){
+    return <%=timeLineName%><%=QueryName%>QueryDb.findAll()
+  }
+}
+
+export class <%=TimeLineName%><%=QueryName%>QueryProjector {
+<%queries[queryIndex].events.map((item) => {-%>
+  @eventHandler({name:'<%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>'})
+  async on<%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>({queryIdentifier: id,...data}: <%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>) {
+    await <%=timeLineName%><%=QueryName%>QueryDb.patch(id, {queryIdentifier: id, ...data})
+<%})-%>}
+}

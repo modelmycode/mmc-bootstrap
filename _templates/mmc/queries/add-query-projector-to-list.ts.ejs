@@ -1,0 +1,7 @@
+---
+to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-query-projectors.ts
+inject: true
+after: export const <%=timeLineName%>QueryProjectors
+skip_if: <%=TimeLineName%><%=QueryName%>QueryProjector,//
+---
+<%=TimeLineName%><%=QueryName%>QueryProjector,//<%= -%>

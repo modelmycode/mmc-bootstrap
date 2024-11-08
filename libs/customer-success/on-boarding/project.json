@@ -1,9 +1,0 @@
-{
-  "name": "on-boarding",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/customer-success/on-boarding/src",
-  "projectType": "library",
-  "tags": [],
-  "// targets": "to see all targets run: nx show project on-boarding --web",
-  "targets": {}
-}

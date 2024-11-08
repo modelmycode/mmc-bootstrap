@@ -1,0 +1,7 @@
+---
+to: apps/gateway/src/registered-handlers.ts
+inject: true
+after: export const queryHandlers
+skip_if: <%=timeLineName%>QueryHandlers //
+---
+    ...<%=timeLineName%>QueryHandlers //<%= -%>

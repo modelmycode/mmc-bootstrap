@@ -2,6 +2,6 @@
 to: apps/gateway/src/registered-handlers.ts
 inject: true
 after: export const queryProjectors
-skip_if: <%=timeLineName%>QueryProjectors //
+skip_if: ...<%=timeLineName%>QueryProjectors
 ---
-    ...<%=timeLineName%>QueryProjectors //<%= -%>
+    ...<%=timeLineName%>QueryProjectors<%= -%>

@@ -1,13 +1,12 @@
 'use server';
-
-import { z } from 'zod'
-
 export async function submitCommandRequest(businessCapability: string, commandName: string, data: any) {
 
   try {
     const body = JSON.stringify({
       businessCapability: businessCapability,
-      payload: data,
+      payload: {
+        ...data
+      },
       command: commandName,
     });
     const response = await fetch('http://localhost:3100/api/command', {
@@ -23,7 +22,7 @@ export async function submitCommandRequest(businessCapability: string, commandNa
       return { success: false, message: response?.statusText as string ?? ''};
     }
 
-    return { success: true, message: response.body };
+    return { success: true, message: { ...response.body }};
   } catch (error) {
     console.error('Error submitting request:', error);
     return { success: false, message: error};

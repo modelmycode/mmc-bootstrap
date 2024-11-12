@@ -9,9 +9,9 @@ after_not_found: //commandHandlers
   @commandHandler({ name: '<%=TimeLineName%><%=CommandName%>' })
 <%if (isStartOfEventStream) {%>
   async <%=timeLineName%><%=CommandName%>(command: <%=TimeLineName%><%=CommandName%>, { eventSourcing }: CommandContext): CommandReturnType<<%=TimeLineName%><%=CommandName%>> {
-<%if (!command.facts.find((item) => item.name===eventStreamIdentifier)) {-%>
+<%if (command.facts.find((item) => item.name===eventStreamIdentifier)) {-%>
     const <%=eventStreamIdentifier%>= command?.<%=eventStreamIdentifier%> ? command?.<%=eventStreamIdentifier%> : crypto.randomUUID();
-<%} else {%>    const <%=eventStreamIdentifier%>= uuid()<%}%>
+<%} else {%>    const <%=eventStreamIdentifier%>= crypto.randomUUID()<%}%>
     await eventSourcing.create(<%=EventStreamName%>, <%=eventStreamIdentifier%>, (eventStream) => eventStream.<%=commandName%>(<%=eventStreamIdentifier%>, command<%if (serviceName) { -%>,<%=serviceName%>.<%=serviceMethodName%><%} -%>)
   );
   return { <%=eventStreamIdentifier%> };

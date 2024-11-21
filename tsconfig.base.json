@@ -15,9 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@customer-success-backend/on-boarding": [
-        "libs/customer-success/on-boarding/src/index.ts"
-      ],
       "@mmc-bootstrap": ["libs/ui/src/ui"],
       "@mmc-bootstrap/styles/*": ["libs/ui/src/styles/*"],
       "@my-project/infrastructure": ["libs/infrastructure/src/index.ts"],

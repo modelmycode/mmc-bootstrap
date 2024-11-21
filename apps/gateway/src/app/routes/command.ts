@@ -1,5 +1,6 @@
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import { logger, messageBus } from '@ebd-connect/cqrs-framework';
+import { pascalCase } from 'change-case';
 
 export default async function (fastify: FastifyInstance) {
   fastify.post(
@@ -15,7 +16,7 @@ export default async function (fastify: FastifyInstance) {
         try {
           return await messageBus.execute(
             Object.assign(payload, {
-              constructor: { name: `${businessCapability}${command}` },
+              constructor: { name: `${pascalCase(businessCapability)}${pascalCase(command)}` },
             })
           );
         } catch (e) {

@@ -18,7 +18,7 @@
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "@radix-ui/react-toggle": "^1.1.0",
-    "change-case": "^5.4.4",
+    "change-case": "^4.1.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "fastify": "~5.0.0",

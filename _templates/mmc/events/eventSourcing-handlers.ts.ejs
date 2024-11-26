@@ -1,10 +1,10 @@
 ---
 to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=eventStreamFileName%>.ts
 inject: true
-before: //end <%=TimeLineName%><%=CommandName%>+
+before: //end <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>+
 ---
-  @eventSourcingHandler({ name: '<%=TimeLineName%><%=EventName%>' })
-  on<%=TimeLineName%><%=EventName%>(event: <%=TimeLineName%><%=EventName%>) {
+  @eventSourcingHandler({ name: '<%=ContextName%>.<%=TimeLineName%>.<%=EventName%>' })
+  on<%=ContextName%>.<%=TimeLineName%>.<%=EventName%>(event: <%=ContextName%>.<%=TimeLineName%>.<%=EventName%>) {
 <%events[eventIndex].facts.filter((fact) => !fact.isIdentifier || isStartOfEventStream).map( (fact) => {%>    this.<%=h.changeCase.camel(fact.name)%> = event.<%=h.changeCase.camel(fact.name)%>;
 <% }) -%>
   }

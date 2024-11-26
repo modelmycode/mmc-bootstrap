@@ -2,7 +2,7 @@
 to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-application-service.ts
 inject: true
 prepend: true
-skip_if: import { <%=TimeLineName%><%=CommandName%> }
+skip_if: import { <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%> }
 ---
-import { <%=TimeLineName%><%=CommandName%> } from './<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.command';
+import { <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%> } from './<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.command';
 <%if(serviceName) {%>import { <%=serviceName%> } from '../../infrastructure';<%}%>

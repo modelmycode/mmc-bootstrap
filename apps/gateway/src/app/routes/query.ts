@@ -16,7 +16,7 @@ export default async function (fastify: FastifyInstance) {
         try {
           return await messageBus.query(
             Object.assign(payload, {
-              constructor: { name: `${pascalCase(businessCapability)}${pascalCase(query)}` },
+              constructor: { name: `${pascalCase(businessCapability)}.${pascalCase(query)}` },
             })
           );
         } catch (e) {

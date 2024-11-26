@@ -2,7 +2,7 @@
 to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.http
 force: true
 ---
-### <%=TimeLineName%><%=CommandName%> Command
+### <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%> Command
 POST http://localhost:3100/api/command
 Content-Type: application/json
 
@@ -16,5 +16,5 @@ Content-Type: application/json
 }
 
 > {%
-  client.global.set('<%=TimeLineName%><%=CommandName%>Id', response.body.<%=TimeLineName%><%=CommandName%>Id)
+  client.global.set('<%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>Id', response.body.<%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>Id)
 %}

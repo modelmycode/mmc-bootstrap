@@ -4,7 +4,7 @@ force: true
 ---
 import { Event } from '@ebd-connect/cqrs-framework';
 
-export class <%=TimeLineName%><%=EventName%> implements Event {
+export class <%=ContextName%>.<%=TimeLineName%>.<%=EventName%> implements Event {
   constructor(
 <% events[eventsIndex].facts.map( (fact) => {%>    public readonly <%=h.changeCase.camel(fact.name)%> : <%=fact.dataType%>,
 <% }) -%>  ) {}

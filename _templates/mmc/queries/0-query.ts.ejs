@@ -15,7 +15,7 @@ export interface I<%=TimeLineName%><%=QueryName%> {
 <%})-%>
 }
 
-@query('<%=TimeLineName%><%=QueryName%>')
+@query('<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>')
 export class <%=TimeLineName%><%=QueryName%> implements Query {
   $responseType!: I<%=TimeLineName%><%=QueryName%> | null
   constructor(
@@ -28,7 +28,7 @@ export const <%=timeLineName%><%=QueryName%>QueryDb
   = new QueryDatabaseModel< I<%=TimeLineName%><%=QueryName%> >('<%=timeLineFileName%>-<%=queryFileName%>')
 
 export class <%=TimeLineName%><%=QueryName%>QueryHandler {
-@queryHandler({ name:'<%=TimeLineName%><%=QueryName%>'})
+@queryHandler({ name:'<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>'})
   async <%=timeLineName%><%=QueryName%>(){
     return <%=timeLineName%><%=QueryName%>QueryDb.findAll()
   }

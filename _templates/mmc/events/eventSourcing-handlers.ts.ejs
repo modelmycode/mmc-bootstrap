@@ -3,7 +3,7 @@ to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=eventStreamFil
 inject: true
 before: //end <%=TimeLineName%><%=CommandName%>+
 ---
-  @eventSourcingHandler({ name: '<%=TimeLineName%><%=EventName%>' })
+  @eventSourcingHandler({ name: '<%=ContextName%>.<%=TimeLineName%>.<%=EventName%>' })
   on<%=TimeLineName%><%=EventName%>(event: <%=TimeLineName%><%=EventName%>) {
 <%events[eventIndex].facts.filter((fact) => !fact.isIdentifier || isStartOfEventStream).map( (fact) => {%>    this.<%=h.changeCase.camel(fact.name)%> = event.<%=h.changeCase.camel(fact.name)%>;
 <% }) -%>

@@ -2,6 +2,6 @@
 to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-query-projectors.ts
 inject: true
 after: export const <%=timeLineName%>QueryHandlers
-skip_if: <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>QueryHandler,//
+skip_if: <%=TimeLineName%><%=QueryName%>QueryHandler,//
 ---
-<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>QueryHandler,//<%= -%>
+<%=TimeLineName%><%=QueryName%>QueryHandler,//<%= -%>

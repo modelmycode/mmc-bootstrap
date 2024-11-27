@@ -2,6 +2,6 @@
 to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/index.ts
 inject: true
 prepend: true
-skip_if: export { <%=ContextName%>.<%=TimeLineName%>.<%=EventName%> }
+skip_if: export { <%=TimeLineName%><%=EventName%> }
 ---
-export { <%=ContextName%>.<%=TimeLineName%>.<%=EventName%> } from './lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=eventFileName%>.event';
+export { <%=TimeLineName%><%=EventName%> } from './lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=eventFileName%>.event';

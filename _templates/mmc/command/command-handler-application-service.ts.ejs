@@ -1,14 +1,14 @@
 ---
 inject: true
 to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-application-service.ts
-after_marker: //start <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>+
-before: //end <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>+
+after_marker: //start <%=TimeLineName%><%=CommandName%>+
+before: //end <%=TimeLineName%><%=CommandName%>+
 after_not_found: //commandHandlers
 ---
-  //start <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>+
-  @commandHandler({ name: '<%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>' })
+  //start <%=TimeLineName%><%=CommandName%>+
+  @commandHandler({ name: '<%=TimeLineName%><%=CommandName%>' })
 <%if (isStartOfEventStream) {%>
-  async <%=timeLineName%><%=CommandName%>(command: <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>, { eventSourcing }: CommandContext): CommandReturnType<<%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>> {
+  async <%=timeLineName%><%=CommandName%>(command: <%=TimeLineName%><%=CommandName%>, { eventSourcing }: CommandContext): CommandReturnType<<%=TimeLineName%><%=CommandName%>> {
 <%if (command.facts.find((item) => item.name===eventStreamIdentifier)) {-%>
     const <%=eventStreamIdentifier%>= command?.<%=eventStreamIdentifier%> ? command?.<%=eventStreamIdentifier%> : crypto.randomUUID();
 <%} else {%>    const <%=eventStreamIdentifier%>= crypto.randomUUID()<%}%>
@@ -16,10 +16,10 @@ after_not_found: //commandHandlers
   );
   return { <%=eventStreamIdentifier%> };
   }<%} else {-%>
-  async <%=timeLineName%><%=CommandName%>(command: <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>, { eventSourcing }: CommandContext) {
+  async <%=timeLineName%><%=CommandName%>(command: <%=TimeLineName%><%=CommandName%>, { eventSourcing }: CommandContext) {
     await eventSourcing.load(<%=EventStreamName%>, command.<%=eventStreamIdentifier%>, (eventStream) =>
       eventStream.<%=commandName%>(command <%if (serviceName) { -%>,<%=serviceName%>.<%=serviceMethodName%><%} -%>)
     );
   }
 <%}%>
-  //end <%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>+
+  //end <%=TimeLineName%><%=CommandName%>+

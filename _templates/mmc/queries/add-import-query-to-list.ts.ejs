@@ -2,10 +2,10 @@
 to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-query-projectors.ts
 inject: true
 prepend: true
-skip_if: import { <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>
+skip_if: import { <%=TimeLineName%><%=QueryName%>
 ---
 import {
   <%=timeLineName%><%=QueryName%>QueryDb,
-  <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>QueryProjector,
-  <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>QueryHandler
+  <%=TimeLineName%><%=QueryName%>QueryProjector,
+  <%=TimeLineName%><%=QueryName%>QueryHandler
 } from './<%=queryFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query' <%= -%>

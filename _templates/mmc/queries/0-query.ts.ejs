@@ -10,14 +10,14 @@ import {
   queryHandler,
 } from '@ebd-connect/cqrs-framework';
 
-export interface I<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%> {
+export interface I<%=TimeLineName%><%=QueryName%> {
 <%queries[queryIndex].facts.map( (fact) => {%>  <%=h.changeCase.camel(fact.name)%>: <%=fact.dataType%>;
 <%})-%>
 }
 
-@query('<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>')
-export class <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%> implements Query {
-  $responseType!: I<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%> | null
+@query('<%=TimeLineName%><%=QueryName%>')
+export class <%=TimeLineName%><%=QueryName%> implements Query {
+  $responseType!: I<%=TimeLineName%><%=QueryName%> | null
   constructor(
 <%queries[queryIndex].facts.map( (fact) => {%>  public readonly <%=h.changeCase.camel(fact.name)%>: <%=fact.dataType%>,
 <%})-%>
@@ -25,19 +25,19 @@ export class <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%> implements Query 
 }
 
 export const <%=timeLineName%><%=QueryName%>QueryDb
-  = new QueryDatabaseModel< I<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%> >('<%=timeLineFileName%>-<%=queryFileName%>')
+  = new QueryDatabaseModel< I<%=TimeLineName%><%=QueryName%> >('<%=timeLineFileName%>-<%=queryFileName%>')
 
-export class <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>QueryHandler {
-@queryHandler({ name:'<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>'})
+export class <%=TimeLineName%><%=QueryName%>QueryHandler {
+@queryHandler({ name:'<%=TimeLineName%><%=QueryName%>'})
   async <%=timeLineName%><%=QueryName%>(){
     return <%=timeLineName%><%=QueryName%>QueryDb.findAll()
   }
 }
 
-export class <%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>QueryProjector {
+export class <%=TimeLineName%><%=QueryName%>QueryProjector {
 <%queries[queryIndex].events.map((item) => {-%>
   @eventHandler({name:'<%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>'})
-  async on<%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>({<%=identifierName%>: id,...data}: <%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>) {
-    await <%=timeLineName%><%=QueryName%>QueryDb.patch(id, {<%=identifierName%>: id, ...data})
+  async on<%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>({queryIdentifier: id,...data}: <%=TimeLineName%><%=h.changeCase.pascalCase(item.name)%>) {
+    await <%=timeLineName%><%=QueryName%>QueryDb.patch(id, {queryIdentifier: id, ...data})
 <%})-%>}
 }

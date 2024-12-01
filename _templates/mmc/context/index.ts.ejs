@@ -1,7 +1,7 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/index.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/index.ts
 unless_exists: true
 ---
-export {<%=TimeLineName%>ApplicationService } from './lib/<%=timeLineFileName%>-application-service'
-export {<%=timeLineName%>AutomationProcessors} from './lib/<%=timeLineFileName%>-automation-processors'
-export {<%=timeLineName%>QueryDb,<%=timeLineName%>QueryProjectors,<%=timeLineName%>QueryHandlers } from './lib/<%=timeLineFileName%>-query-projectors'
+export {<%=TimeLineName%>ApplicationService } from './lib/<%=eventStreamFileName%>-application-service'
+export {<%=timeLineName%>AutomationProcessors} from './lib/<%=eventStreamFileName%>-automation-processors'
+export {<%=timeLineName%>QueryDb,<%=timeLineName%>QueryProjectors,<%=timeLineName%>QueryHandlers } from './lib/<%=eventStreamFileName%>-query-projectors'

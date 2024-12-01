@@ -2,6 +2,6 @@
 to: tsconfig.base.json
 inject: true
 after:    "paths"
-skip_if: <%=contextFileName%>-backend/<%=timeLineFileName%>"
+skip_if: <%=contextFileName%>-backend/<%=eventStreamFileName%>"
 ---
-      "@<%=contextFileName%>-backend/<%=timeLineFileName%>": ["libs/<%=contextFileName%>/<%=timeLineFileName%>/src/index.ts"],<%= -%>
+      "@<%=contextFileName%>-backend/<%=eventStreamFileName%>": ["libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/index.ts"],<%= -%>

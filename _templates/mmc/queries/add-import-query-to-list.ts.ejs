@@ -1,5 +1,5 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-query-projectors.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=eventStreamFileName%>-query-projectors.ts
 inject: true
 prepend: true
 skip_if: import { <%=TimeLineName%><%=QueryName%>
@@ -8,4 +8,4 @@ import {
   <%=timeLineName%><%=QueryName%>QueryDb,
   <%=TimeLineName%><%=QueryName%>QueryProjector,
   <%=TimeLineName%><%=QueryName%>QueryHandler
-} from './<%=queryFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query' <%= -%>
+} from './<%=queryFileName%>/<%=eventStreamFileName%>-<%=queryFileName%>.query' <%= -%>

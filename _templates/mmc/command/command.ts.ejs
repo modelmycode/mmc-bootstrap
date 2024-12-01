@@ -1,5 +1,5 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.command.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=commandFileName%>/<%=eventStreamFileName%>-<%=commandFileName%>.command.ts
 force: true
 ---
 import { command, <%if (isStartOfEventStream) {%>Responding<%}%>Command } from '@ebd-connect/cqrs-framework';

@@ -1,7 +1,7 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-automation-processors.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=eventStreamFileName%>-automation-processors.ts
 inject: true
 prepend: true
 skip_if: import { <%=TimeLineName%><%=AutomationName%>
 ---
-import { <%=TimeLineName%><%=AutomationName%> } from './<%=commandFileName%>/<%=timeLineFileName%>-<%=automationFileName%>' <%= -%>
+import { <%=TimeLineName%><%=AutomationName%> } from './<%=commandFileName%>/<%=eventStreamFileName%>-<%=automationFileName%>' <%= -%>

@@ -1,11 +1,11 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=commandFileName%>/<%=timeLineFileName%>-<%=automationFileName%>.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=commandFileName%>/<%=eventStreamFileName%>-<%=automationFileName%>.ts
 force: true
 ---
 import { Processor, automationFactory, eventHandler,messageBus,} from "@ebd-connect/cqrs-framework"
-import {<%=TimeLineName%><%=CommandName %>,} from "./<%=timeLineFileName%>-<%=commandFileName%>.command";
+import {<%=TimeLineName%><%=CommandName %>,} from "./<%=eventStreamFileName%>-<%=commandFileName%>.command";
 import {<%queries[0].events.map((item) => {%><%=TimeLineName%><%=h.changeCase.pascalCase(item.name)-%>
-,<%})-%>} from '@<%=contextFileName%>-backend/<%=timeLineFileName%>';
+,<%})-%>} from '@<%=contextFileName%>-backend/<%=eventStreamFileName%>';
 
 interface <%= h.changeCase.pascalCase(queries[0].name) %> {
 <% queries[0].facts.map((fact) => { %>  <%= h.changeCase.camelCase(fact.name) %>?: <%= fact.dataType %>,<% }) -%>
@@ -25,8 +25,8 @@ implements Processor<<%= h.changeCase.pascalCase(queries[0].name) %>>
 <% queries[0].events.map((event) => { %>
   @eventHandler({name: '<%=TimeLineName%><%=h.changeCase.pascalCase(event.name)%>'})
   async on<%=h.changeCase.pascalCase(event.name)%>(event: <%=TimeLineName%><%=h.changeCase.pascalCase(event.name)%>) {
-  await this.automation.<%if (!event.outputEvent) {%>add(event.onBoardingId, {
-  onBoardingId: event.onBoardingId,  email: event.email,
+  await this.automation.<%if (!event.outputEvent) {%>add(<%=event.facts[0]?.name%>, {
+  <% queries[0].facts.map((fact) => { %>  <%= h.changeCase.camelCase(fact.name) %>: event.<%= h.changeCase.camelCase(fact.name) %>,<% }) -%>
   })<%} else {%>onComplete(event.<%= h.changeCase.camelCase(event.facts[0]?.name) %>)<%}%>
   }<%})%>
 }

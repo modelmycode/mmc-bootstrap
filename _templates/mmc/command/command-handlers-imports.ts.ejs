@@ -1,8 +1,8 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=timeLineFileName%>-application-service.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=eventStreamFileName%>-application-service.ts
 inject: true
 prepend: true
 skip_if: import { <%=TimeLineName%><%=CommandName%> }
 ---
-import { <%=TimeLineName%><%=CommandName%> } from './<%=commandFileName%>/<%=timeLineFileName%>-<%=commandFileName%>.command';
+import { <%=TimeLineName%><%=CommandName%> } from './<%=commandFileName%>/<%=eventStreamFileName%>-<%=commandFileName%>.command';
 <%if(serviceName) {%>import { <%=serviceName%> } from '../../infrastructure';<%}%>

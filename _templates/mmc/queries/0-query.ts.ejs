@@ -1,5 +1,5 @@
 ---
-to: libs/<%=contextFileName%>/<%=timeLineFileName%>/src/lib/<%=queryFileName%>/<%=timeLineFileName%>-<%=queryFileName%>.query.ts
+to: libs/<%=contextFileName%>/<%=eventStreamFileName%>/src/lib/<%=queryFileName%>/<%=eventStreamFileName%>-<%=queryFileName%>.query.ts
 force: true
 ---
 import {
@@ -25,7 +25,7 @@ export class <%=TimeLineName%><%=QueryName%> implements Query {
 }
 
 export const <%=timeLineName%><%=QueryName%>QueryDb
-  = new QueryDatabaseModel< I<%=TimeLineName%><%=QueryName%> >('<%=timeLineFileName%>-<%=queryFileName%>')
+  = new QueryDatabaseModel< I<%=TimeLineName%><%=QueryName%> >('<%=eventStreamFileName%>-<%=queryFileName%>')
 
 export class <%=TimeLineName%><%=QueryName%>QueryHandler {
 @queryHandler({ name:'<%=ContextName%>.<%=TimeLineName%>.<%=QueryName%>'})

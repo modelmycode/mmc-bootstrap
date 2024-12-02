@@ -4,7 +4,7 @@ force: true
 ---
 import { command, <%if (isStartOfEventStream) {%>Responding<%}%>Command } from '@ebd-connect/cqrs-framework';
 
-@command('<%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>')
+@command('<%=TimeLineName%><%=CommandName%>')
 export class <%=TimeLineName%><%=CommandName%> implements <%if (isStartOfEventStream) {%>Responding<%}%>Command {
   constructor(
 <% command.facts.map( (item) => {%>    public readonly <%=h.changeCase.camel(item.name)%> : <%=item.dataType%>,

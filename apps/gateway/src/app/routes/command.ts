@@ -12,12 +12,11 @@ export default async function (fastify: FastifyInstance) {
       reply
     ) => {
       const { command, payload, businessCapability } = request.body;
-      const name = businessCapability.split('.').map((name) => pascalCase(name))?.toString().replace(/,/g, '.');
-      if (command && payload) {
+            if (command && payload) {
         try {
           return await messageBus.execute(
             Object.assign(payload, {
-              constructor: { name: `${name}.${pascalCase(command)}` },
+              constructor: { name: `${businessCapability}${pascalCase(command)}` },
             })
           );
         } catch (e) {

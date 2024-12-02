@@ -6,7 +6,7 @@ before: //end <%=TimeLineName%><%=CommandName%>+
 after_not_found: //commandHandlers
 ---
   //start <%=TimeLineName%><%=CommandName%>+
-  @commandHandler({ name: '<%=ContextName%>.<%=TimeLineName%>.<%=CommandName%>' })
+  @commandHandler({ name: '<%=TimeLineName%><%=CommandName%>' })
 <%if (isStartOfEventStream) {%>
   async <%=timeLineName%><%=CommandName%>(command: <%=TimeLineName%><%=CommandName%>, { eventSourcing }: CommandContext): CommandReturnType<<%=TimeLineName%><%=CommandName%>> {
 <%if (command.facts.find((item) => item.name===eventStreamIdentifier)) {-%>
